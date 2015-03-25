@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="accountService" class="com.davidoladeji.park.service.implementation.AccountServiceImpl"/>
+    <bean id="airportService" class="com.davidoladeji.park.service.implementation.AirportServiceImpl"/>
+    <bean id="carparkSpaceService" class="com.davidoladeji.park.service.implementation.CarparkSpaceServiceImpl"/>
+    <bean id="carparkSpace" class="com.davidoladeji.park.service.implementation.CarparkServiceImpl"/>
+    <bean id="bookingService" class="com.davidoladeji.park.service.implementation.BookingServiceImpl"/>
+    <bean id="genderService" class="com.davidoladeji.park.service.implementation.GenderServiceImpl"/>
+    <bean id="roleService" class="com.davidoladeji.park.service.implementation.RoleServiceImpl"/>
+    <bean id="scheduledService" class="com.davidoladeji.park.service.implementation.ScheduledServiceImpl"/>
+    <bean id="spaceTypeService" class="com.davidoladeji.park.service.implementation.SpaceTypeServiceImpl"/>
+    <bean id="searchService" class="com.davidoladeji.park.service.implementation.SearchServiceImpl"/>
+
+
+
+</beans>

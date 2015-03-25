@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security-3.2.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+
+    <bean id="loginUserDetailsService"
+          class="com.davidoladeji.park.service.security.LoginUserDetailsService">
+    </bean>
+
+    <bean id="encoder"
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </bean>
+
+    <mvc:annotation-driven/>
+    <security:http pattern="/resources/**" security="none"/>
+
+    <security:http auto-config="true" use-expressions="true">
+
+        <security:intercept-url pattern="/login" access='isAnonymous()'/>
+        <security:intercept-url pattern="/logout" access="permitAll"/>
+        <security:intercept-url pattern="/signup" access="permitAll"/>
+        <security:intercept-url pattern="/soapws" access='isAnonymous()'/>
+        <security:intercept-url pattern="/soapws" access="permitAll"/>
+        <security:intercept-url pattern="/booking/**" access="authenticated"/>
+        <security:intercept-url pattern="/admin/**" access="authenticated"/>
+        <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN') OR hasRole('ROLE_STAFF')"/>
+
+        <!--<security:intercept-url pattern="/resources/**" access="permitAll"  />-->
+
+        <security:intercept-url pattern="/403" access="permitAll"/>
+        <security:intercept-url pattern="/404" access="permitAll"/>
+
+
+        <security:form-login
+                login-page="/login"
+                default-target-url="/home"
+                authentication-failure-url="/login?error"
+                username-parameter="username"
+                password-parameter="password"
+                />
+
+        <security:access-denied-handler error-page="/403"/>
+
+
+        <security:logout invalidate-session="true"
+                         logout-success-url="/logout"
+                         logout-url="/j_spring_security_logout"/>
+
+        <!-- Spring Security Login Attempts-->
+
+        <security:session-management>
+            <security:concurrency-control max-sessions="29" error-if-maximum-exceeded="true"/>
+        </security:session-management>
+
+    </security:http>
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="loginUserDetailsService">
+            <security:password-encoder ref="encoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+</beans>

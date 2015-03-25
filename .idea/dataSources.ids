@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - parkw@localhost" uuid="8e53b2b1-eca4-45b6-9b1b-4e06e219bf41">
+    <database-info product="MySQL" version="5.6.21" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="parkw"/>
+    <table name="account" schema="" catalog="parkw" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="userRole_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="firstname" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="lastname" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="180" scale="0" nullable="true" jdbcType="12"/>
+      <column name="gender_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="dob" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="mobile" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="profilecompleteness" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8" def="MA=="/>
+      <column name="company" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="manager" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="username" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="account_ibfk_1" columns="gender_id" ref-table="gender" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="account_ibfk_2" columns="userRole_id" ref-table="role" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="email_UNIQUE" unique="true" columns="email"/>
+      <index name="fk_role_id_idx" unique="false" columns="email"/>
+      <index name="gender" unique="false" columns="gender_id"/>
+    </table>
+    <table name="airport" schema="" catalog="parkw" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="postcode" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="airport_carpark_ibfk_1" table="airport_carpark" schema="" catalog="parkw" columns="airport_id"/>
+    </table>
+    <table name="airport_carpark" schema="" catalog="parkw" type="TABLE">
+      <column name="carpark_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="airport_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="carpark_id"/>
+      <foreign-key name="airport_carpark_ibfk_1" columns="airport_id" ref-table="airport" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="airport_carpark_ibfk_2" columns="carpark_id" ref-table="carpark" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="booking" schema="" catalog="parkw" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="carparkSpace_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="receiptno" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="car_registration" sqlType="VARCHAR" precision="65" scale="0" nullable="false" jdbcType="12"/>
+      <column name="car_model" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="flight_number" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="base_price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="destination_price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="arrival_time" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="arrival_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="departure_time" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="departure_date" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="spaceType_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="car_body" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="booking_ibfk_1" columns="carparkSpace_id" ref-table="carpark_space" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="booking_ibfk_2" columns="spaceType_id" ref-table="space_type" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="carpark_space_ibfk_2" table="carpark_space" schema="" catalog="parkw" columns="booking_id"/>
+      <index name="fk_accounts_id_idx" unique="false" columns="account_id"/>
+    </table>
+    <table name="carpark" schema="" catalog="parkw" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="codename" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="mobile" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="capacity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="capacitydisabled" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="capacityfamily" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="spacesavailable" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="available" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="disabledavailable" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="familyavailable" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="airport_carpark_ibfk_2" table="airport_carpark" schema="" catalog="parkw" columns="carpark_id"/>
+      <exported-key name="carpark_carpark_space_ibfk_1" table="carpark_carpark_space" schema="" catalog="parkw" columns="carpark_id"/>
+      <index name="unique_codename" unique="true" columns="codename"/>
+    </table>
+    <table name="carpark_carpark_space" schema="" catalog="parkw" type="TABLE">
+      <column name="carpark_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="carpark_space_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="carpark_carpark_space_ibfk_1" columns="carpark_id" ref-table="carpark" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="carpark_carpark_space_ibfk_2" columns="carpark_space_id" ref-table="carpark_space" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="unique_carpark_space_id" unique="true" columns="carpark_space_id"/>
+    </table>
+    <table name="carpark_space" schema="" catalog="parkw" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="spaceType_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bookingstatus" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="booking_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="carpark_space_ibfk_1" columns="spacetype_id" ref-table="space_type" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="carpark_space_ibfk_2" columns="booking_id" ref-table="booking" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="booking_ibfk_1" table="booking" schema="" catalog="parkw" columns="carparkSpace_id"/>
+      <exported-key name="carpark_carpark_space_ibfk_2" table="carpark_carpark_space" schema="" catalog="parkw" columns="carpark_space_id"/>
+      <index name="spacetype" unique="false" columns="spaceType_id"/>
+    </table>
+    <table name="country" schema="" catalog="parkw" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="countryCode" sqlType="CHAR" precision="2" scale="0" nullable="false" jdbcType="1" def="Jyc="/>
+      <column name="countryName" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="currencyCode" sqlType="CHAR" precision="3" scale="0" nullable="true" jdbcType="1"/>
+      <column name="capital" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="gender" schema="" catalog="parkw" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="account_ibfk_1" table="account" schema="" catalog="parkw" columns="gender_id"/>
+    </table>
+    <table name="role" schema="" catalog="parkw" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="rolename" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="codename" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="account_ibfk_2" table="account" schema="" catalog="parkw" columns="userRole_id"/>
+    </table>
+    <table name="search" schema="" catalog="parkw" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="airportid" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="traveldate" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="traveltime" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="travelenddate" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="numdays" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="timeofsearch" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="travelendtime" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="spaceTypeId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="space_type" schema="" catalog="parkw" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="booking_ibfk_2" table="booking" schema="" catalog="parkw" columns="spaceType_id"/>
+      <exported-key name="carpark_space_ibfk_1" table="carpark_space" schema="" catalog="parkw" columns="spacetype_id"/>
+      <index name="unique_name" unique="true" columns="name"/>
+    </table>
+  </data-source>
+</component>

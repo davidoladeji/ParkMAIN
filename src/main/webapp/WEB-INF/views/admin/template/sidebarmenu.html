@@ -1,0 +1,99 @@
+<div id="menu" class="hidden-print hidden-xs  sidebar-white">
+    <div id="sidebar-collapse-wrapper">
+        <div id="brandWrapper">
+            <a href="#">
+                <span class="text">Parkit - <i>easy parking</i></span>
+            </a>
+        </div>
+        <div id="logoWrapper">
+            <div id="logo">
+                <!-- more icons (at least two can still be added here if needed -->
+                <a href="/home" class="btn btn-sm btn-inverse"><i class="fa fa-fw icon-home-fill-1"></i></a>
+                <a href="/j_spring_security_logout" class="btn btn-sm btn-inverse pull-right"><i
+                        class="fa fa-fw fa-sign-out"></i></a>
+            </div>
+        </div>
+        <ul class="menu list-unstyled hide" id="navigation_components">
+        </ul>
+        <ul class="menu list-unstyled hide" id="navigation_modules">
+        </ul>
+        <ul class="menu list-unstyled hide" id="navigation_modules_front">
+        </ul>
+        <ul class="menu list-unstyled" id="navigation_current_page">
+            <li class="hasSubmenu  active">
+                <a href="#sidebar-collapse-overview" data-toggle="collapse" class="glyphicons home ">
+                    <span>Overview</span>
+                </a>
+                <ul id="sidebar-collapse-overview" class="collapse   in ">
+                    <li class="active"><a href="/admin/"><i class="fa fa-rss"></i> Dashboard</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="hasSubmenu ">
+                <a href="#sidebar-collapse-users" data-toggle="collapse" class="glyphicons cars ">
+                    <span class="badge pull-right badge-primary hidden-md">${numUsers}</span><i></i>
+                    <span>Users</span>
+                </a>
+                <ul id="sidebar-collapse-users" class="collapse  ">
+                    <li><a href="/admin/users" class="glyphicons car"><i></i><span>All Users</span></a>
+                    </li>
+                    <li><a href="/admin/users/addPage"
+                           class="glyphicons circle_plus"><i></i><span>Add User</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="hasSubmenu ">
+                <a href="#sidebar-collapse-carparks" data-toggle="collapse" class="glyphicons cars ">
+                    <span class="badge pull-right badge-primary hidden-md">${numCarparks}</span><i></i>
+                    <span>Carparks</span>
+                </a>
+                <ul id="sidebar-collapse-carparks" class="collapse  ">
+                    <li><a href="/admin/carparks" class="glyphicons car"><i></i><span>All Carparks</span></a>
+                    </li>
+                    <li><a href="/admin/carparks/addPage"
+                           class="glyphicons circle_plus"><i></i><span>Add Carpark</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="hasSubmenu ">
+                <a href="#sidebar-collapse-spaces" data-toggle="collapse" class="glyphicons keys ">
+                    <span class="badge pull-right badge-primary hidden-md">${numSpaces}</span><i></i>
+                    <span>Spaces</span>
+                </a>
+                <ul id="sidebar-collapse-spaces" class="collapse  ">
+                    <li><a href="/admin/spaces" class="glyphicons keys"><i></i><span>All Spaces</span></a>
+                    </li>
+                    <li><a href="/admin/spaces/addPage" class="glyphicons circle_plus"><i></i><span>Add Space</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="hasSubmenu ">
+                <a href="#sidebar-collapse-bookings" data-toggle="collapse" class="glyphicons log_book ">
+                    <span class="badge pull-right badge-primary hidden-md">${numBookings}</span><i></i>
+                    <span>Bookings</span>
+                </a>
+                <ul id="sidebar-collapse-bookings" class="collapse  ">
+                    <li><a href="/admin/bookings" class="glyphicons log_book"><i></i><span>All Bookings</span></a>
+                    </li>
+                    <li><a href="/admin/bookings/addPage"
+                           class="glyphicons circle_plus"><i></i><span>Add Booking</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="hasSubmenu ">
+                <a href="#sidebar-collapse-airplane" data-toggle="collapse" class="glyphicons cars ">
+                    <span class="badge pull-right badge-primary hidden-md">${numAirtports}</span><i></i>
+                    <span>Airports</span>
+                </a>
+                <ul id="sidebar-collapse-airplane" class="collapse  ">
+                    <li><a href="/admin/airports" class="glyphicons airplane"><i></i><span>All Airports</span></a>
+                    </li>
+                    <li><a href="/admin/airports/addPage"
+                           class="glyphicons circle_plus"><i></i><span>Add Airport</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

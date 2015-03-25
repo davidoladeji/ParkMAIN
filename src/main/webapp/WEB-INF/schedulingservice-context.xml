@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.davidoladeji.park"/>
+
+    <!-- Spring's scheduling support -->
+    <task:scheduled-tasks scheduler="taskScheduler">
+
+        <!-- Do Job every 5am and 5pm for five minutes -->
+          <task:scheduled ref="cronServiceFive" method="performCarparksUpdate" cron="*/5 * * * * ?"/>
+        <!--<task:scheduled ref="cronServiceFive" method="deleteSearches" cron="* 0/5 5,17 * * *"/>-->
+
+        <!-- Upadte all Carparks  every 10:45am minutes -->
+        <task:scheduled ref="cronServiceFour" method="deactivateBookings" cron="*/5 * * * * ?"/>
+        <!--<task:scheduled ref="cronServiceFour" method="setFamilyAvailable" cron="10 45 * * * ?"/>-->
+
+        <!-- Upadte all Carparks  every 6 AM  -->
+        <task:scheduled ref="cronServiceThree" method="setDisabledAvailable" cron="*/5 * * * * ?"/>
+        <!--<task:scheduled ref="cronServiceThree" method="setDisabledAvailable" cron="* * 6 * * ?"/>-->
+
+        <!-- Upadte all Carparks  every 3 PM-->
+        <task:scheduled ref="cronServiceTwo" method="performCarparksUpdate" cron="*/5 * * * * ?"/>
+
+        <!-- Delete all searches every 5 minutes -->
+        <task:scheduled ref="cronServiceOne" method="performService" cron="*/5 * * * * ?"/>
+        <!--<task:scheduled ref="cronServiceOne" method="performService" cron="* * 7 * * ?"/>-->
+    </task:scheduled-tasks>
+
+    <bean id="cronServiceFive" class="com.davidoladeji.park.service.implementation.ScheduledServiceImpl"/>
+    <bean id="cronServiceFour" class="com.davidoladeji.park.service.implementation.ScheduledServiceImpl"/>
+    <!-- The bean that does the actual work -->
+    <bean id="cronServiceOne" class="com.davidoladeji.park.service.implementation.ScheduledServiceImpl"/>
+    <!-- Another bean that does the actual work -->
+    <bean id="cronServiceTwo" class="com.davidoladeji.park.service.implementation.ScheduledServiceImpl"/>
+
+    <bean id="cronServiceThree" class="com.davidoladeji.park.service.implementation.ScheduledServiceImpl"/>
+
+    <!-- Defines a ThreadPoolTaskScheduler instance with configurable pool size. -->
+    <task:scheduler id="taskScheduler" pool-size="6"/>
+
+</beans>

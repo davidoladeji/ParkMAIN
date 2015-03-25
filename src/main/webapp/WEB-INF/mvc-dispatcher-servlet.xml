@@ -1,0 +1,68 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <!--I could have all under one scan-->
+
+    <!-- <bean id="search"    class="com.davidoladeji.park.model.Search" scope="session">
+         <aop:scoped-proxy/>
+     </bean>-->
+
+    <context:component-scan base-package="com.davidoladeji.park"/>
+    <jpa:repositories base-package="com.davidoladeji.park.repository"/>
+
+    <context:annotation-config/>
+
+    <mvc:annotation-driven/>
+
+
+    <!--Get all frontend external resources folder recognised-->
+    <mvc:resources mapping="css/**" location="resources/css/"/>
+    <mvc:resources mapping="js/**" location="resources/js/"/>
+    <mvc:resources mapping="fonts/**" location="resources/fonts/"/>
+    <mvc:resources mapping="img/**" location="resources/img/"/>
+    <mvc:resources mapping="/favicon.ico" location="resources/img/favicon.ico"/>
+
+    <mvc:resources mapping="/login/css/**" location="resources/css/"/>
+    <mvc:resources mapping="/login/js/**" location="resources/js/"/>
+    <mvc:resources mapping="/login/fonts/**" location="resources/fonts/"/>
+    <mvc:resources mapping="/login/img/**" location="resources/img/"/>
+
+    <mvc:resources mapping="/logout/css/**" location="resources/css/"/>
+    <mvc:resources mapping="/failedlogin/css/**" location="resources/css/"/>
+
+    <mvc:resources mapping="/spaces/css/**" location="resources/css/"/>
+    <mvc:resources mapping="/spaces/js/**" location="resources/js/"/>
+    <mvc:resources mapping="/spaces/img/**" location="resources/img/"/>
+    <mvc:resources mapping="/spaces/fonts/**" location="resources/fonts/"/>
+
+
+    <mvc:resources mapping="/booking/css/**" location="resources/css/"/>
+    <mvc:resources mapping="/booking/js/**" location="resources/js/"/>
+    <mvc:resources mapping="/booking/img/**" location="resources/img/"/>
+    <mvc:resources mapping="/booking/fonts/**" location="resources/fonts/"/>
+
+    <!--Get all backend external resources folder recognised -->
+    <mvc:resources mapping="../assets/**" location="resources/assets/"/>
+    <mvc:resources mapping="assets/**" location="resources/assets/"/>
+    <mvc:resources mapping="/admin/assets/**" location="resources/assets/"/>
+    <mvc:resources mapping="/admin/carparks/assets/**" location="resources/assets/"/>
+    <mvc:resources mapping="/admin/bookings/assets/**" location="resources/assets/"/>
+    <mvc:resources mapping="/admin/spaces/assets/**" location="resources/assets/"/>
+    <mvc:resources mapping="/admin/users/assets/**" location="resources/assets/"/>
+    <mvc:resources mapping="/admin/airports/assets/**" location="resources/assets/"/>
+
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+
+</beans>

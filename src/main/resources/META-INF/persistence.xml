@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <!--<persistence-unit name="defaultPersistenceUnit" transaction-type="JTA">-->
+    <persistence-unit name="defaultPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+
+        <class>com.davidoladeji.park.model.Gender</class>
+        <class>com.davidoladeji.park.model.Airport</class>
+        <class>com.davidoladeji.park.model.Booking</class>
+        <class>com.davidoladeji.park.model.Carpark</class>
+        <class>com.davidoladeji.park.model.CarparkSpace</class>
+        <class>com.davidoladeji.park.model.Role</class>
+        <class>com.davidoladeji.park.model.SpaceType</class>
+        <class>com.davidoladeji.park.model.Account</class>
+        <class>com.davidoladeji.park.model.Search</class>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/parkw"/>
+
+            <property name="hibernate.connection.username" value="daveola"/>
+            <property name="hibernate.connection.password" value="mydream"/>
+           
+            
+            <property name="hibernate.max_fetch_depth" value="5"/>
+            <property name="hibernate.show_sql" value="false"/>
+			<!-- <property name="hbm2ddl.auto" value="create"/> -->
+        </properties>
+    </persistence-unit>
+</persistence>
