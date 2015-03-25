@@ -1,13 +1,12 @@
 package com.davidoladeji.park.service.interfaces;
 
 import com.davidoladeji.park.model.Booking;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.ejb.Local;
 import javax.ejb.Remote;
+import javax.jws.WebMethod;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
@@ -15,11 +14,14 @@ import java.util.List;
  */
 
 @Remote
+@WebService
+@SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface BookingService {
     public void createBooking(Booking booking);
 
     public Booking findByReceiptno(String receiptno);
 
+    @WebMethod
     public Booking findByCarRegistration(String carregistration);
 
     public List<Booking> findAllBookings();

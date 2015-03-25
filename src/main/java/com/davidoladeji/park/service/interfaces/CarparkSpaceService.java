@@ -3,7 +3,6 @@ package com.davidoladeji.park.service.interfaces;
 import com.davidoladeji.park.model.Carpark;
 import com.davidoladeji.park.model.CarparkSpace;
 
-import javax.ejb.Local;
 import javax.ejb.Remote;
 import java.util.List;
 
@@ -30,16 +29,21 @@ public interface CarparkSpaceService {
 
     public List<CarparkSpace> findAllAvailableSpaces();
 
+
     public CarparkSpace findOneRegularAvailableSpace();
 
     public CarparkSpace findOneDisabledAvailableSpace();
 
     public CarparkSpace findOneFamilyAvailableSpace();
 
+
+    public CarparkSpace findOneBySpaceTypeAndAvailableSpace(String spaceTypeName, boolean availability);
+
     public List<CarparkSpace> findAllBySpaceTypeAvailableSpace(String spaceTypeName, boolean availability);
 
     public List<CarparkSpace> findAllBySpaceTypeInCarpark(String spaceTypeName, Carpark carpark);
 
+    public List<CarparkSpace> findAllByCarpark(Carpark carpark);
 
 
     /**

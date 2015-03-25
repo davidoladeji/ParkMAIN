@@ -32,10 +32,10 @@
                             </form:select>
                         </div>
                     </div>
-                    
-                    
+
+
                     <form:hidden path="spaceTypeId"/>
-                                                       
+
                 </div>
                 <div class="input-daterange" data-date-format="yyyy-MM-dd">
                     <div class="row">
@@ -44,26 +44,26 @@
                                 <i class="fa fa-calendar input-icon input-icon-highlight"></i>
                                 <label>Travel Date</label>
 
-                               
-                                
+
+
                                 <fmt:formatDate value="${search.traveldate}" var="fmtTravelDate"
                                                                                pattern="yyyy-MM-dd" />
                                                                 <form:input class="date-pick1 form-control r_from_date"
                                                                             path="traveldate" name="start"  value = "${fmtTravelDate}" type="text" required="required"/>
-                                
+
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group form-group-lg form-group-icon-left">
                                 <i class="fa fa-clock-o input-icon input-icon-highlight"></i>
                                 <label>Travel Time</label>
-                                
+
                                 <fmt:formatDate value="${search.travelenddate}" var="fmtTravelTime"
                                                                                pattern="hh:mm:ss" />
                                                                 <form:input class="time-pick form-control"
                                                                             path="traveltime" name="traveltime"
                                                                             value="${fmtTravelTime}" type="text" required="required"/>
-                                
+
                             </div>
                         </div>
                         <div class="col-md-3">

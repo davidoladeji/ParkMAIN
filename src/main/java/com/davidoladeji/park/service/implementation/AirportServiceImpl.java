@@ -5,7 +5,6 @@ import com.davidoladeji.park.repository.AirportRepository;
 import com.davidoladeji.park.service.interfaces.AirportService;
 import org.jboss.spring.callback.SpringLifecycleInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.ejb.Stateful;
 import javax.interceptor.Interceptors;

@@ -223,7 +223,8 @@ public class BookController {
         }
 
 
-        // calculate the price using Pricing class
+        // calculate the price using pricing class
+        // We need to find 3 diff price and then whichever is lower but not 0 we display that.
 
 
         double price = booking.getCarparkSpace().getCarpark().getRegularprice();
@@ -246,7 +247,7 @@ public class BookController {
         Account account = accountService.findByAccountname(auth.getName());
         model.addObject("loggedInUser", account);
 
-        //TODO If there is a disabled discount send a message to front of the difference
+        //TODO If there is a disabled discount
 
 
         booking.setBase_price(price3);
@@ -308,6 +309,7 @@ public class BookController {
             booking.setAccount(account);
             booking.setActive(true);
             booking.setReceiptno();
+            booking.setBase_price(booking.getBase_price()* booking.getNumOfDays()) ;
             booking.setDestinationPrice(booking.getTotal());
             bookingService.createBooking(booking);
         }

@@ -2,7 +2,6 @@ package com.davidoladeji.park.service.interfaces;
 
 import com.davidoladeji.park.model.Account;
 
-import javax.ejb.Local;
 import javax.ejb.Remote;
 import java.util.List;
 

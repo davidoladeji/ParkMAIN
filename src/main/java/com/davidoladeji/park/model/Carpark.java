@@ -61,7 +61,7 @@ public class Carpark implements Serializable {
     @Column(name = "available")
     private boolean available;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval=true, fetch = FetchType.LAZY)
     @JoinTable(name = "carpark_carpark_space",
             joinColumns = {@JoinColumn(name = "carpark_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "carpark_space_id", referencedColumnName = "id")})

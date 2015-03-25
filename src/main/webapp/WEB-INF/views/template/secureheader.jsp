@@ -51,27 +51,27 @@
 </header>
 <script>
 	function exchange(currency, cval){
-		
-		
+
+
 		// ajax to convert
-		
+
 		$.ajax({
 	    	url: '${pageContext.request.contextPath}/exchange/',
 	    	type: "GET",
 			data: {'symb': currency},
-	    	
+
 	    	success: function(data) {
 	    		console.log("Data "+ data);
 	    		$('#totalTrip').html(data);
 	    	}
 	    });
-		
+
 		// refresh page
 		$('#exchange').html(currency+ ' ' +cval);
-		
-		
-		
-		
+
+
+
+
 	}
 
 </script>

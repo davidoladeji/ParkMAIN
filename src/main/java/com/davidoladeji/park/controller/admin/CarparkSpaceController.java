@@ -77,28 +77,64 @@ public class CarparkSpaceController {
 
         int carparkcapacity = space.getCarpark().getCapacity();
 
-        int carparkCreatedSpaces = space.getCarpark().getSpacesavailable();
+        // Caparpark's Number of Created Spaces
+        List<CarparkSpace> carparkSpacesAtCarpark = carparkSpaceService.findAllByCarpark(space.getCarpark());
 
+
+
+        // Caparpark's Capacity for Regular
+        int caparkregularcapacity = space.getCarpark().getCapacity() - (space.getCarpark().getCapacityfamily() + space.getCarpark().getCapacitydisabled());
+
+        // Caparpark's Capacity for Family
         int caparkfamilycapacity = space.getCarpark().getCapacityfamily();
 
+
+        // Caparpark's Capacity for Disabled
         int carparkdisabledcapacity = space.getCarpark().getCapacitydisabled();
 
-        int carparkCreatedSpacesFamily = space.getCarpark().getCarparkSpaces().listIterator().
+
+        // List of created spaces that are of disabled type in that carpark
+        List<CarparkSpace> carparkSpaceDisabled = carparkSpaceService.findAllBySpaceTypeInCarpark("disabled", space.getCarpark());
+
+        // List of created spaces that are of family type in that carpark
+        List<CarparkSpace> carparkSpaceFamily = carparkSpaceService.findAllBySpaceTypeInCarpark("family", space.getCarpark());
+
+        //List of created spaces that are of regular type in that carpark
+        List<CarparkSpace> carparkSpaceRegular = carparkSpaceService.findAllBySpaceTypeInCarpark("regular", space.getCarpark());
 
 
-        List<CarparkSpace> carparkSpaceFamilyAtCarpark = carparkSpaceService.findAllBySpaceTypeInCarpark()
 
 
-        if(carparkcapacity <= carparkCreatedSpaces ){
+        //Check that the capacity is not full
+        if(carparkcapacity > carparkSpacesAtCarpark.size() ){
             carparkSpaceService.createCarparkSpace(space);
-            if(spaceType.equalsIgnoreCase("disabled")){
-                if(carparkdisabledcapacity <= )
+
+            //If its a disabled space check that disabled space capacity is not full
+
+            if(space.getSpaceType().getName().equalsIgnoreCase("disabled") ){
+
+                if(carparkdisabledcapacity > carparkSpaceDisabled.size()){
+                    carparkSpaceService.createCarparkSpace(space);
+                }
+
+            }else if (space.getSpaceType().getName().equalsIgnoreCase("family") ){
+
+                if(caparkfamilycapacity > carparkSpaceFamily.size()){
+                    carparkSpaceService.createCarparkSpace(space);
+                }
+
+            }else if (space.getSpaceType().getName().equalsIgnoreCase("regular") ){
+
+                if(caparkregularcapacity > carparkSpaceRegular.size()){
+                    carparkSpaceService.createCarparkSpace(space);
+                }
             }
+
             return new ModelAndView(new RedirectView("/admin/spaces"));
         }else{
 
-            String referer = request.getHeader("Referer");
-            return new ModelAndView(new RedirectView("redirect:" + referer));
+            model.setViewName("/admin/addSpace");
+            return model;
         }
 
 
@@ -139,8 +175,8 @@ public class CarparkSpaceController {
 
     }
 
-    @RequestMapping("/admin/spaces/delete/{spaceId}")
-    public String deleteSpaceAction(@PathVariable("spaceId") Long id) {
+    @RequestMapping("/admin/spaces/delete/{id}")
+    public String deleteSpaceAction(@PathVariable("id") Long id) {
         carparkSpaceService.deleteCarparkSpaceById(id);
         return "redirect://admin/spaces";
     }

@@ -93,7 +93,7 @@ public class Pricing {
 
         return newprice;
     }
-    
+
     /**
      * Gets the total trip price.
      *
@@ -104,7 +104,7 @@ public class Pricing {
      */
     public static double getTotalTripPrice(double price, LocalDate arrivaldate, LocalDate departdate) {
 
-      
+
         int days = Days.daysBetween(arrivaldate, departdate).getDays();
         return price * days;
     }

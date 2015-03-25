@@ -6,7 +6,6 @@ import com.davidoladeji.park.repository.CarparkSpaceRepository;
 import com.davidoladeji.park.service.interfaces.CarparkSpaceService;
 import org.jboss.spring.callback.SpringLifecycleInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
@@ -55,6 +54,10 @@ public class CarparkSpaceServiceImpl implements CarparkSpaceService {
         return carparkSpaceRepository.findByBooked(false);
     }
 
+    public CarparkSpace findOneBySpaceTypeAndAvailableSpace(String spaceTypeName, boolean availability) {
+        return carparkSpaceRepository.findBySpaceType_NameAndBooked(spaceTypeName, availability);
+    }
+
     public CarparkSpace findOneRegularAvailableSpace() {
         long regular = 1;
         List<CarparkSpace> carparkSpaceList = carparkSpaceRepository.findBySpaceType_IdAndBooked(regular, false);
@@ -76,12 +79,15 @@ public class CarparkSpaceServiceImpl implements CarparkSpaceService {
         return carparkSpace;
     }
 
-
-    public List<CarparkSpace> findAllBySpaceTypeAvailableSpace(String spaceTypeName, boolean availability) {
-        return  carparkSpaceRepository.findBySpaceType_IdAndBooked(spaceTypeName, false);
+    public List<CarparkSpace> findAllByCarpark(Carpark carpark) {
+        return carparkSpaceRepository.findAllByCarpark(carpark);
     }
 
-    public List<CarparkSpace> findAllBySpaceTypeInCarpark(String spaceTypeName, Carpark carpark){
+    public List<CarparkSpace> findAllBySpaceTypeAvailableSpace(String spaceTypeName, boolean availability) {
+        return carparkSpaceRepository.findAllBySpaceType_NameAndBooked(spaceTypeName, availability);
+    }
+
+    public List<CarparkSpace> findAllBySpaceTypeInCarpark(String spaceTypeName, Carpark carpark) {
         return carparkSpaceRepository.findBySpaceTypeAndCarpark(spaceTypeName, carpark);
     }
 
@@ -90,8 +96,6 @@ public class CarparkSpaceServiceImpl implements CarparkSpaceService {
         List<CarparkSpace> carparkSpaceList = carparkSpaceRepository.findByCarpark_Airport_IdAndCarpark_IdAndSpaceType_IdAndBooked(airportId, carparkId, spaceTypeId, availability);
         return carparkSpaceList;
     }
-
-
 
 
 }

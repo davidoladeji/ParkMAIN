@@ -93,9 +93,9 @@
                                     <td class="center">${booking.flightNumber}</td>
                                     <td class="center">
                                         <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-default"><i class="fa fa-eye"></i></a>
-                                            <a href="#" class="btn btn-success"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                            <a href="/admin/bookings/viewBooking/${booking.id}" class="btn btn-default"><i class="fa fa-eye"></i></a>
+                                            <a href="/admin/bookings/editPage/${booking.id}" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                                            <a href="/admin/bookings/delete/${booking.id}" class="btn btn-danger"><i class="fa fa-times"></i></a>
                                         </div>
                                     </td>
                                 </tr>

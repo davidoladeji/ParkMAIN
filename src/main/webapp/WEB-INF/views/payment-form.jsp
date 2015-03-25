@@ -54,8 +54,8 @@
                 </ul>
                 <div class="gap gap-small"></div>
                 <h4>Pay with new Card</h4>
-				
-                
+
+
                     <div class="clearfix">
                         <div class="form-group form-group-cc-number">
                             <label>Card Number</label>
@@ -86,7 +86,7 @@
                         <button type="submit" class="btn btn-primary btn-lg pull-right">Proceed Payment</button>
                     </div>
 
-               
+
             </div>
 
             <div class="col-md-4">
@@ -99,22 +99,27 @@
                     </header>
                     <ul class="booking-item-payment-details">
                         <li>
+                            <c:if test="${booking.numOfDays == 1}">
+                                <h5>Booking for ${booking.numOfDays} day</h5>
+                            </c:if>
+                            <c:if test="${booking.numOfDays > 1}">
                             <h5>Booking for ${booking.numOfDays} days</h5>
+                            </c:if>
 
                             <div class="booking-item-payment-date">
-                                <p class="booking-item-payment-date-day"><fmt:formatDate pattern="MMMM, dd" 
+                                <p class="booking-item-payment-date-day"><fmt:formatDate pattern="MMMM, dd"
             value="${booking.arrivalDate}" /></p>
 
-                                <p class="booking-item-payment-date-weekday"><fmt:formatDate pattern="EEEE" 
+                                <p class="booking-item-payment-date-weekday"><fmt:formatDate pattern="EEEE"
             value="${booking.arrivalDate}" /></p>
                             </div>
                             <i class="fa fa-arrow-right booking-item-payment-date-separator"></i>
 
                             <div class="booking-item-payment-date">
-                                <p class="booking-item-payment-date-day"><fmt:formatDate pattern="MMMM, dd" 
+                                <p class="booking-item-payment-date-day"><fmt:formatDate pattern="MMMM, dd"
             value="${booking.departureDate}" /></p>
 
-                                <p class="booking-item-payment-date-weekday"><fmt:formatDate pattern="EEEE" 
+                                <p class="booking-item-payment-date-weekday"><fmt:formatDate pattern="EEEE"
             value="${booking.departureDate}" /></p>
                             </div>
                         </li>
@@ -122,7 +127,9 @@
                             <h5>Car: ${booking.carBody }</h5>
                         </li>
                     </ul>
-                    <p class="booking-item-payment-total">Total trip: <span id="totalTrip">${booking.total}</span>
+
+                    <p class="booking-item-payment-total">Total trip: <span id="symbol">  </span> <span id="totalTrip"> ${booking.total}</span>
+
                     </p>
                 </div>
             </div>

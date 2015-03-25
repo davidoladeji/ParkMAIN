@@ -21,9 +21,7 @@ import java.util.List;
 @Controller
 public class BookingController {
 
-    Calculator count = new Calculator();
 
-    double sumprice;
 
     MyTimeDateUtil myTimeDateUtil = new MyTimeDateUtil();
 
@@ -125,6 +123,20 @@ public class BookingController {
 
 
     }
+
+    @RequestMapping(value = "admin/bookings/viewBooking/{id}", method = RequestMethod.GET)
+    public ModelAndView viewBookingDetails(ModelAndView modell, @PathVariable("id") Long id) {
+
+        modell = new ModelAndView("/admin/editBooking");
+
+        Booking booking = bookingService.findBookingById(id);
+        modell.addObject("booking", booking);
+
+        modell.addObject("airportx", carparkSpaceService.findAllCarparkSpaces());
+
+        return modell;
+    }
+
 
     @RequestMapping(value = "admin/bookings/editPage/{id}", method = RequestMethod.GET)
     public ModelAndView editBookingPage(ModelAndView modell, @PathVariable("id") Long id) {

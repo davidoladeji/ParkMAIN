@@ -25,9 +25,16 @@ import java.util.List;
 public interface CarparkSpaceRepository extends JpaRepository<CarparkSpace, Long> {
     List<CarparkSpace> findByBooked(boolean bookingstatus);
 
-    List<CarparkSpace> findBySpaceType_IdAndBooked(String spaceType, boolean status);
+    CarparkSpace findBySpaceType_NameAndBooked(String spaceTypeName, boolean availability);
+
+    List<CarparkSpace> findAllBySpaceType_NameAndBooked(String spaceTypeName, boolean availability);
+
+    List<CarparkSpace> findAllByCarpark(Carpark carpark);
+
+    List<CarparkSpace> findBySpaceType_IdAndBooked(Long spaceType, boolean status);
 
     List<CarparkSpace> findByCarpark_Airport_IdAndCarpark_IdAndSpaceType_IdAndBooked(Long airportId, Long carparkId, Long spaceTypeId, boolean status);
+
     List<CarparkSpace> findBySpaceTypeAndCarpark(String spaceTypeName, Carpark carpark);
 
 }

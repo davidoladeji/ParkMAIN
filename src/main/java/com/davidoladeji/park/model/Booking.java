@@ -1,6 +1,7 @@
 package com.davidoladeji.park.model;
 
 
+import javax.jws.WebService;
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
@@ -92,10 +93,10 @@ public class Booking implements Serializable {
 
     @ManyToOne
     private Account account;
-    
+
     @Transient
     private double total;
-    
+
     @Transient
     private String currencyIn;
 
@@ -262,15 +263,15 @@ public class Booking implements Serializable {
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
-    
+
     public int getNumOfDays(){
-    	
+
     	DateTime aTime = new  DateTime(arrivalDate);
     	DateTime dTime = new  DateTime(departureDate);
     	System.out.println(aTime + " " + dTime);
-    	
+
     	int d = Days.daysBetween(aTime, dTime).getDays();
-    	
+
     	return d;
     }
 

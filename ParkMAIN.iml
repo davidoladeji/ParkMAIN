@@ -51,7 +51,6 @@
       <excludeFolder url="file://$MODULE_DIR$/src/main/application" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/com/davidoladeji/park/service/rest" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/com/davidoladeji/park/service/scheduling" />
-      <excludeFolder url="file://$MODULE_DIR$/src/main/java/com/davidoladeji/park/service/soap" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/java/com/davidoladeji/park/ws" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>

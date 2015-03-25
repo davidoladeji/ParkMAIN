@@ -3,7 +3,6 @@ package com.davidoladeji.park.service.interfaces;
 import com.davidoladeji.park.model.Airport;
 import com.davidoladeji.park.model.Carpark;
 
-import javax.ejb.Local;
 import javax.ejb.Remote;
 import java.util.List;
 

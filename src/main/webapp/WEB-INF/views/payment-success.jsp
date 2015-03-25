@@ -25,7 +25,7 @@
 
                 <h2 class="text-center">${loggedInUser.firstName}, your payment was successful!</h2>
                 <h5 class="text-center mb30">Booking details has been send to ${loggedInUser.email}</h5>
-                
+
             </div>
         </div>
         <div class="gap"></div>

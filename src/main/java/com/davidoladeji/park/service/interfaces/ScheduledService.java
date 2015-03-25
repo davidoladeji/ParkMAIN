@@ -1,6 +1,5 @@
 package com.davidoladeji.park.service.interfaces;
 
-import javax.ejb.Local;
 import javax.ejb.Remote;
 
 /**
@@ -11,8 +10,12 @@ import javax.ejb.Remote;
 public abstract interface ScheduledService {
 
     public abstract void performService();
+
     public void performCarparksUpdate();
+
     public void setFamilyAvailable();
+
     public void setDisabledAvailable();
+
     public void deactivateBookings();
 }

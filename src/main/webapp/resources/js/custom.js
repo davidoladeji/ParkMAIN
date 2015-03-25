@@ -76,7 +76,7 @@ $('.typeahead').typeahead({
 
 $('input.date-pick, .input-daterange, .date-pick-inline').datepicker({
     todayHighlight: true,
-    startDate: new Date() 
+    startDate: new Date()
 });
 
 

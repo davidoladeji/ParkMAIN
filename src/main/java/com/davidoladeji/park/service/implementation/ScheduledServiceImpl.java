@@ -5,17 +5,12 @@ import com.davidoladeji.park.model.Carpark;
 import com.davidoladeji.park.model.Search;
 import com.davidoladeji.park.service.interfaces.BookingService;
 import com.davidoladeji.park.service.interfaces.CarparkService;
-import com.davidoladeji.park.service.interfaces.ScheduledService;
 import com.davidoladeji.park.service.interfaces.SearchService;
 import org.apache.log4j.Logger;
-import org.jboss.spring.callback.SpringLifecycleInterceptor;
 import org.joda.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
 
-import javax.ejb.Stateless;
-import javax.interceptor.Interceptors;
 import java.util.Date;
 import java.util.List;
 
@@ -27,20 +22,15 @@ import java.util.List;
 
 //@Stateless(name = "ScheduledServiceImpl")
 //@Interceptors(SpringLifecycleInterceptor.class)
-public class ScheduledServiceImpl /*implements ScheduledService */{
+public class ScheduledServiceImpl /*implements ScheduledService */ {
 
     protected static Logger logger = Logger.getLogger("service");
-
-    @Autowired
-    private SearchService searchService;
-
-    @Autowired
-    private CarparkService carparkService;
-
-
     @Autowired
     BookingService bookingService;
-
+    @Autowired
+    private SearchService searchService;
+    @Autowired
+    private CarparkService carparkService;
 
     /**
      * Delete searches saved periodically
@@ -108,13 +98,13 @@ public class ScheduledServiceImpl /*implements ScheduledService */{
             carparkList.get(i).setFamilyavailable(disabledavailable);
         }
 
-        System.out.println("Method executed at every 5 seconds. Current time is :: "+ new Date());
+        System.out.println("Method executed at every 5 seconds. Current time is :: " + new Date());
     }
 
 
     @Scheduled(cron = "*/5 * * * * MON-FRI")
     public void deactivateBookings() {
-        System.out.println("Method executed at every 5 seconds. Current time is :: "+ new Date());
+        System.out.println("Method executed at every 5 seconds. Current time is :: " + new Date());
         List<Booking> activeBookingsList = bookingService.findAllActiveBookings(true);
         System.out.println("Something happening");
         Date today = new Date();
