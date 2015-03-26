@@ -94,13 +94,13 @@ public class CarparkSpaceController {
 
 
         // List of created spaces that are of disabled type in that carpark
-        List<CarparkSpace> carparkSpaceDisabled = carparkSpaceService.findAllBySpaceTypeInCarpark("disabled", space.getCarpark());
+        List<CarparkSpace> carparkSpaceDisabled = carparkSpaceService.findAllBySpaceType_NameAndCarpark("Disabled", space.getCarpark());
 
         // List of created spaces that are of family type in that carpark
-        List<CarparkSpace> carparkSpaceFamily = carparkSpaceService.findAllBySpaceTypeInCarpark("family", space.getCarpark());
+        List<CarparkSpace> carparkSpaceFamily = carparkSpaceService.findAllBySpaceType_NameAndCarpark("Family", space.getCarpark());
 
         //List of created spaces that are of regular type in that carpark
-        List<CarparkSpace> carparkSpaceRegular = carparkSpaceService.findAllBySpaceTypeInCarpark("regular", space.getCarpark());
+        List<CarparkSpace> carparkSpaceRegular = carparkSpaceService.findAllBySpaceType_NameAndCarpark("Regular", space.getCarpark());
 
 
 
@@ -111,19 +111,19 @@ public class CarparkSpaceController {
 
             //If its a disabled space check that disabled space capacity is not full
 
-            if(space.getSpaceType().getName().equalsIgnoreCase("disabled") ){
+            if(space.getSpaceType().getName().equalsIgnoreCase("Disabled") ){
 
                 if(carparkdisabledcapacity > carparkSpaceDisabled.size()){
                     carparkSpaceService.createCarparkSpace(space);
                 }
 
-            }else if (space.getSpaceType().getName().equalsIgnoreCase("family") ){
+            }else if (space.getSpaceType().getName().equalsIgnoreCase("Family") ){
 
                 if(caparkfamilycapacity > carparkSpaceFamily.size()){
                     carparkSpaceService.createCarparkSpace(space);
                 }
 
-            }else if (space.getSpaceType().getName().equalsIgnoreCase("regular") ){
+            }else if (space.getSpaceType().getName().equalsIgnoreCase("Regular") ){
 
                 if(caparkregularcapacity > carparkSpaceRegular.size()){
                     carparkSpaceService.createCarparkSpace(space);

@@ -13,7 +13,7 @@
 
 <body>
 <div class="global-wrap">
-    <%@ include file="template/myheader.jsp" %>
+    <%@ include file="template/successheader.jsp" %>
     <div class="container">
         <p><br/></p>
     </div>

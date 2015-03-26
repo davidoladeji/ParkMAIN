@@ -65,7 +65,7 @@ public class BookingController {
  * Send total price to view
  */
 
-        List<Booking> allActiveBookings = bookingService.findAllActiveBookings(true);
+
         double totalActiveBookings = bookingService.getTotalActiveBookingPrice();
         model.addObject("totalActiveBookings", totalActiveBookings);
 /**

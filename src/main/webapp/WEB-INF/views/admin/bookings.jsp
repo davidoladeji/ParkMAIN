@@ -52,11 +52,11 @@
                             </th>
 
                             <th style="width: 2%;" class="center">ID</th>
-                            <th class="center">Receipt No.</th>
+                            <th class="center">Car Registeration.</th>
                             <th>Customer</th>
                             <th class="center">Arrival</th>
                             <th class="center">Departure</th>
-                            <th class="center">Price (&euro;)</th>
+                            <th class="center">Price (&pound;)</th>
                             <th class="center">Price</th>
                             <th class="center">Flight No.</th>
                             <th class="center" style="width: 150px;">Actions</th>
@@ -71,8 +71,11 @@
                                     <td class="center uniformjs">
                                         <input type="checkbox"/>
                                     </td>
-                                    <td class="center">${bookingx.indexOf(booking)+1}</td>
-                                    <td class="important">${booking.receiptno}</td>
+                                    <td class="center">
+                                    ${bookingx.indexOf(booking)+1}
+                                    </td>
+                                    <td class="important">${booking.carRegistration} <br/>
+                                        <small>Receipt No: ${booking.receiptno}</small></td>
                                     <td>
                                         <strong>${booking.account.firstName}, ${booking.account.lastName}</strong>
                                         <br/>

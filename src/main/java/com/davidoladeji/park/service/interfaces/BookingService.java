@@ -1,6 +1,7 @@
 package com.davidoladeji.park.service.interfaces;
 
 import com.davidoladeji.park.model.Booking;
+import com.davidoladeji.park.model.Carpark;
 import org.springframework.stereotype.Service;
 
 import javax.ejb.Remote;
@@ -14,14 +15,13 @@ import java.util.List;
  */
 
 @Remote
-@WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface BookingService {
     public void createBooking(Booking booking);
 
     public Booking findByReceiptno(String receiptno);
 
-    @WebMethod
+
     public Booking findByCarRegistration(String carregistration);
 
     public List<Booking> findAllBookings();
@@ -39,4 +39,6 @@ public interface BookingService {
     public double getTotalBookingPrice();
 
     public double getTotalActiveBookingPrice();
+
+    public Booking findByCarRegistrationAndCarparkSpace_Carpark(String carregistration, Carpark carpark);
 }

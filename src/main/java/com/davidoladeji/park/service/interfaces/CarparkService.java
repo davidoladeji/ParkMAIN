@@ -4,6 +4,8 @@ import com.davidoladeji.park.model.Airport;
 import com.davidoladeji.park.model.Carpark;
 
 import javax.ejb.Remote;
+import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
@@ -11,6 +13,7 @@ import java.util.List;
  */
 
 @Remote
+@SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface CarparkService {
 
     public void createCarpark(Carpark carpark);

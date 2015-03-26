@@ -62,6 +62,8 @@
       <column name="active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <column name="spaceType_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="car_body" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="grantedexit" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="grantedentry" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="booking_ibfk_1" columns="carparkSpace_id" ref-table="carpark_space" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="booking_ibfk_2" columns="spaceType_id" ref-table="space_type" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -95,7 +97,7 @@
     <table name="carpark_space" schema="" catalog="parkw" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="spaceType_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="bookingstatus" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MA=="/>
+      <column name="bookingstatus" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
       <column name="booking_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="carpark_space_ibfk_1" columns="spacetype_id" ref-table="space_type" ref-schema="" ref-catalog="parkw" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>

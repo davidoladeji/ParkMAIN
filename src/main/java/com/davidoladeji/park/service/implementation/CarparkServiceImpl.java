@@ -10,9 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.ejb.Stateless;
 import javax.interceptor.Interceptors;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 import java.util.List;
 
 /**
@@ -33,9 +37,11 @@ public class CarparkServiceImpl implements CarparkService {
         carparkRepository.save(carpark);
     }
 
+
     public void deleteCarpark(Carpark carpark) {
         carparkRepository.delete(carpark);
     }
+
 
     public void deleteCarparkById(Long id) {
         carparkRepository.delete(carparkRepository.findOne(id));
@@ -50,9 +56,11 @@ public class CarparkServiceImpl implements CarparkService {
         return carparkRepository.findAll();
     }
 
+
     public Carpark findCarparkById(Long id) {
         return carparkRepository.findOne(id);
     }
+
 
     public int countAllCarparks() {
         return carparkRepository.findAll().size();
@@ -65,10 +73,12 @@ public class CarparkServiceImpl implements CarparkService {
         return carparkRepository.findAll(request);
     }
 
+
     public List<Carpark> findAvailableCarparksInAirport(boolean available, Airport airport) {
         List<Carpark> carparkList = carparkRepository.findByAvailableAndAirport(available, airport);
         return carparkList;
     }
+
 
     public int getAvailableSpace(Carpark carpark, boolean status) {
         long availablespace = carparkRepository.countByCarparkSpaces_Booked(false);

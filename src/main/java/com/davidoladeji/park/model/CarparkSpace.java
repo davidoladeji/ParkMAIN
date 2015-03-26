@@ -1,6 +1,7 @@
 package com.davidoladeji.park.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 
 /**
@@ -64,6 +65,7 @@ public class CarparkSpace implements Serializable {
         this.spaceType = spaceType;
     }
 
+    @XmlTransient
     public Carpark getCarpark() {
         return carpark;
     }

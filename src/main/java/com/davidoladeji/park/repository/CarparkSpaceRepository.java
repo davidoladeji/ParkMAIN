@@ -35,7 +35,7 @@ public interface CarparkSpaceRepository extends JpaRepository<CarparkSpace, Long
 
     List<CarparkSpace> findByCarpark_Airport_IdAndCarpark_IdAndSpaceType_IdAndBooked(Long airportId, Long carparkId, Long spaceTypeId, boolean status);
 
-    List<CarparkSpace> findBySpaceTypeAndCarpark(String spaceTypeName, Carpark carpark);
+    List<CarparkSpace> findAllBySpaceType_NameAndCarpark(String spaceTypeName, Carpark carpark);
 
 }
 

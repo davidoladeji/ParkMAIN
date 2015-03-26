@@ -155,9 +155,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
-                                                <h5>${carpark.spacesavailable}</h5>
-
-                                                <p>spaces available</p>
+                                                <h5>${carpark.spacesavailable}</h5><small>spaces available</small>
+                                                <small>Disabled: ${carpark.disabledavailable}</small>
+                                                <small>Family: ${carpark.familyavailable}</small>
                                             </div>
                                             <div class="col-md-3"><span
                                                     class="booking-item-price">&pound; ${carpark.regularprice}</span><span>/space</span>

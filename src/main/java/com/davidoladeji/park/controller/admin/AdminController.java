@@ -84,6 +84,13 @@ public class AdminController {
         model.addAttribute("numAvailableSpaces", numAvailableSpaces);
 
 
+        /**
+         * Get The Total booking in pound (Base Currence
+         */
+
+        double totalSoldBookings = bookingService.getTotalBookingPrice();
+        model.addAttribute("totalSoldBookings", totalSoldBookings);
+
         CustomNumber customNumber = new CustomNumber();
 
         if (numSpaces >= 1 && numAvailableSpaces >= 1) {

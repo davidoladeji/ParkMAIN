@@ -87,8 +87,8 @@ public class CarparkSpaceServiceImpl implements CarparkSpaceService {
         return carparkSpaceRepository.findAllBySpaceType_NameAndBooked(spaceTypeName, availability);
     }
 
-    public List<CarparkSpace> findAllBySpaceTypeInCarpark(String spaceTypeName, Carpark carpark) {
-        return carparkSpaceRepository.findBySpaceTypeAndCarpark(spaceTypeName, carpark);
+    public List<CarparkSpace> findAllBySpaceType_NameAndCarpark(String spaceTypeName, Carpark carpark) {
+        return carparkSpaceRepository.findAllBySpaceType_NameAndCarpark(spaceTypeName, carpark);
     }
 
 

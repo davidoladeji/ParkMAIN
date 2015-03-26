@@ -41,7 +41,7 @@ public interface CarparkSpaceService {
 
     public List<CarparkSpace> findAllBySpaceTypeAvailableSpace(String spaceTypeName, boolean availability);
 
-    public List<CarparkSpace> findAllBySpaceTypeInCarpark(String spaceTypeName, Carpark carpark);
+    public List<CarparkSpace> findAllBySpaceType_NameAndCarpark(String spaceTypeName, Carpark carpark);
 
     public List<CarparkSpace> findAllByCarpark(Carpark carpark);
 

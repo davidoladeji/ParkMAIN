@@ -1,6 +1,7 @@
 package com.davidoladeji.park.model;
 
 
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.*;
 import javax.validation.constraints.Future;
@@ -81,13 +82,13 @@ public class Booking implements Serializable {
     @Column(name = "car_registration")
     private String carRegistration;
 
-
+    @Column(name = "active")
     private boolean active;
 
     @OneToOne
     private SpaceType spaceType;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private CarparkSpace carparkSpace;
 
 
@@ -101,7 +102,22 @@ public class Booking implements Serializable {
     private String currencyIn;
 
 
+    @Column(name = "grantedexit")
+    private boolean grantedExit;
+
+    @Column(name = "grantedentry")
+    private boolean grantedEntry;
+
+
     public Booking() {
+    }
+
+
+    public Booking(CarparkSpace carparkSpace, Account account, SpaceType spaceType, boolean active) {
+        this.carparkSpace = carparkSpace;
+        this.account = account;
+        this.spaceType = spaceType;
+        this.active = active;
     }
 
     public Long getId() {
@@ -211,7 +227,6 @@ public class Booking implements Serializable {
         this.carRegistration = carRegistration;
     }
 
-
     public boolean isActive() {
         return active;
     }
@@ -291,5 +306,22 @@ public class Booking implements Serializable {
 		this.currencyIn = currencyIn;
 	}
 
+    @WebMethod
+    public boolean isGrantedEntry() {
+        return grantedEntry;
+    }
 
+    @WebMethod
+    public void setGrantedEntry(boolean grantedEntry) {
+        this.grantedEntry = grantedEntry;
+    }
+
+    @WebMethod
+    public boolean isGrantedExit() {
+        return grantedExit;
+    }
+    @WebMethod
+    public void setGrantedExit(boolean grantedExit) {
+        this.grantedExit = grantedExit;
+    }
 }

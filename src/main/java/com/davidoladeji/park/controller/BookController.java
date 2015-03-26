@@ -18,6 +18,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Date;
@@ -309,9 +310,14 @@ public class BookController {
             booking.setAccount(account);
             booking.setActive(true);
             booking.setReceiptno();
-            booking.setBase_price(booking.getBase_price()* booking.getNumOfDays()) ;
+            booking.setBase_price(booking.getBase_price() * booking.getNumOfDays()) ;
             booking.setDestinationPrice(booking.getTotal());
+
+
+           // booking.getCarparkSpace().setBooked(true);
+           // booking.getCarparkSpace().setBooking(booking);
             bookingService.createBooking(booking);
+
         }
 
 

@@ -1,6 +1,7 @@
 package com.davidoladeji.park.repository;
 
 import com.davidoladeji.park.model.Booking;
+import com.davidoladeji.park.model.Carpark;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +28,11 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 
     List<Booking> findByActive(boolean active);
 
-    Booking findByCarRegistration(String carregistration);
+    Booking findById(Long id);
+
+    Booking findByCarRegistration(String carRegistration);
+
+    Booking findByCarRegistrationAndCarparkSpace_Carpark(String carRegistration, Carpark carpark);
 
     Booking findByReceiptno(String receiptno);
 }

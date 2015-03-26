@@ -5,12 +5,16 @@ import com.davidoladeji.park.model.Carpark;
 import com.davidoladeji.park.model.Search;
 import com.davidoladeji.park.service.interfaces.BookingService;
 import com.davidoladeji.park.service.interfaces.CarparkService;
+import com.davidoladeji.park.service.interfaces.ScheduledService;
 import com.davidoladeji.park.service.interfaces.SearchService;
 import org.apache.log4j.Logger;
+import org.jboss.spring.callback.SpringLifecycleInterceptor;
 import org.joda.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +24,9 @@ import java.util.List;
  */
 
 
-//@Stateless(name = "ScheduledServiceImpl")
-//@Interceptors(SpringLifecycleInterceptor.class)
-public class ScheduledServiceImpl /*implements ScheduledService */ {
+@Stateless(name = "ScheduledServiceImpl")
+@Interceptors(SpringLifecycleInterceptor.class)
+public class ScheduledServiceImpl implements ScheduledService {
 
     protected static Logger logger = Logger.getLogger("service");
     @Autowired
@@ -35,6 +39,7 @@ public class ScheduledServiceImpl /*implements ScheduledService */ {
     /**
      * Delete searches saved periodically
      */
+    @Scheduled(cron = "*/5 * * * * ?")
     public void performService() {
         String threadName = Thread.currentThread().getName();
         logger.debug("   " + threadName + " cron service performing important stuff..");
@@ -52,6 +57,7 @@ public class ScheduledServiceImpl /*implements ScheduledService */ {
      * Deactivate a Carpark from being available
      */
 
+    @Scheduled(cron = "*/5 * * * * ?")
     public void performCarparksUpdate() {
         List<Carpark> carparkList = carparkService.findAllCarparks();
         for (int i = 0; i < carparkList.size(); i++) {
@@ -65,7 +71,7 @@ public class ScheduledServiceImpl /*implements ScheduledService */ {
         }
     }
 
-
+    @Scheduled(cron = "*/5 * * * * ?")
     public void setFamilyAvailable() {
         List<Carpark> carparkList = carparkService.findAllCarparks();
         int familyavailable = 0;
@@ -82,7 +88,7 @@ public class ScheduledServiceImpl /*implements ScheduledService */ {
         }
     }
 
-
+    @Scheduled(cron = "*/5 * * * * ?")
     public void setDisabledAvailable() {
         List<Carpark> carparkList = carparkService.findAllCarparks();
         int disabledavailable = 0;
@@ -102,9 +108,10 @@ public class ScheduledServiceImpl /*implements ScheduledService */ {
     }
 
 
-    @Scheduled(cron = "*/5 * * * * MON-FRI")
+    @Scheduled(cron = "*/5 * * * * ?")
     public void deactivateBookings() {
-        System.out.println("Method executed at every 5 seconds. Current time is :: " + new Date());
+        String threadName = Thread.currentThread().getName();
+        logger.debug("   " + threadName + " cron service performing important stuff..");
         List<Booking> activeBookingsList = bookingService.findAllActiveBookings(true);
         System.out.println("Something happening");
         Date today = new Date();

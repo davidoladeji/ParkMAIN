@@ -1,8 +1,10 @@
 package com.davidoladeji.park.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import javax.transaction.Transactional;
-import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,7 +15,6 @@ import java.util.List;
 
 @Entity(name = "carpark")
 @Table(name = "carpark")
-//@CapacitySpacesCheck(CheckStyle.STRICT)
 public class Carpark implements Serializable {
 
     //@PersistenceContext(type = PersistenceContextType.EXTENDED)
@@ -61,11 +62,13 @@ public class Carpark implements Serializable {
     @Column(name = "available")
     private boolean available;
 
-    @OneToMany(cascade = {CascadeType.ALL}, orphanRemoval=true, fetch = FetchType.LAZY)
+    @OneToMany(fetch=FetchType.LAZY)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinTable(name = "carpark_carpark_space",
             joinColumns = {@JoinColumn(name = "carpark_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "carpark_space_id", referencedColumnName = "id")})
     private List<CarparkSpace> carparkSpaces;
+
 
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -171,7 +174,7 @@ public class Carpark implements Serializable {
         this.regularprice = regularprice;
     }
 
-
+    @XmlTransient
     public int getDisabledavailable() {
         return disabledavailable;
     }
@@ -195,6 +198,7 @@ public class Carpark implements Serializable {
 
     }
 
+    @XmlTransient
     public int getFamilyavailable() {
         return familyavailable;
     }
@@ -216,7 +220,7 @@ public class Carpark implements Serializable {
         this.familyavailable = familyavailable;
     }
 
-    @Transactional
+    @XmlTransient
     public List<CarparkSpace> getCarparkSpaces() {
         return carparkSpaces;
     }
@@ -225,6 +229,7 @@ public class Carpark implements Serializable {
         this.carparkSpaces = carparkSpaces;
     }
 
+    @XmlTransient
     public Airport getAirport() {
         return airport;
     }

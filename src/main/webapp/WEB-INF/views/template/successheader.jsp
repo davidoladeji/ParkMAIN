@@ -13,25 +13,6 @@
                 <div class="col-md-4">
                     <div class="top-user-area clearfix">
                         <ul class="top-user-area-list list list-horizontal list-border">
-                            <security:authorize access="hasRole('ROLE_ADMIN')">
-                                <li>
-                                    <a href="/admin">Admin</a>
-                                </li>
-                            </security:authorize>
-
-
-                            <security:authorize access="hasRole('ROLE_ANONYMOUS')">
-                                <li><a href="/login"><i
-                                        class="fa fa-lock  box-icon-gray box-icon-success box-icon-left animate-icon-border-rise round"></i></a>
-                                </li>
-                            </security:authorize>
-
-
-                            <security:authorize
-                                    access="hasRole('ROLE_ADMIN') OR hasRole('ROLE_USER') OR hasRole('ROLE_STAFF')">
-                                <li><a href="/j_spring_security_logout"><i class="fa fa-sign-out danger fa-2x"></i></a>
-                                </li>
-                            </security:authorize>
 
                         </ul>
                     </div>
